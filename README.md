@@ -1,6 +1,6 @@
 # Team MACK
 
-# Something Musical (SMTHNG MSCL) - project 3 *API*
+# Something Musical (SMTHNG MSCL) App - Project 3 
 - Backend Development
 
 ## API(s) Used
@@ -16,7 +16,7 @@
 - bcrypt
 
 ## Installation Instructions
-1. 
+1. TBD
 
 ## ERD
-![img](ERD-new.jpg)
+![img](ERD-Updated.jpg)
