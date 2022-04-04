@@ -71,3 +71,4 @@ router.get('/favorites/:id', requireToken, (req, res, next) => {
 })
 
 module.exports = router
+  
