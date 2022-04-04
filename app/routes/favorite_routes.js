@@ -1,5 +1,6 @@
 const express = require('express')
 const passport = require('passport')
+const axios = require('axios')
 
 // pull in Mongoose model for favorites
 const Favorite = require('../models/favorite')
@@ -50,10 +51,9 @@ router.get('/search/:type/:name', (req, res, next) => {
     .get(
       `${apiUrl}${type}?client_id=${clientCode}&client_SECRET=${secretCode}&name=${name}`
     )
-    .then((favorite) => {
-      return favorite.map((favorite) => favorite.toObject())
-    })
-    .then((favorite) => res.status(200).json({ favorite: favorite }))
+    .then((response) => res.status(200).json(response.data))
+    // .then(response => console.log(JSON.stringify(response.data)))
+    // console.log('this is the data', data)
     // if an error occurs, pass it to the handler
     .catch(next)
 })
