@@ -37,4 +37,16 @@ router.get('/favorites', requireToken, (req, res, next) => {
     .catch(next)
 })
 
+// SHOW
+// GET /favorites/<seatGeekId>
+router.get('/favorites/:id', requireToken, (req, res, next) => {
+  // req.params.id will be set based on the `:id` in the route
+  Favorite.findById(req.params.id)
+    .then(handle404)
+    // if `findById` is succesful, respond with 200 and "example" JSON
+    .then((favorite) => res.status(200).json({ favorite: favorite.toObject() }))
+    // if an error occurs, pass it to the handler
+    .catch(next)
+})
+
 module.exports = router
