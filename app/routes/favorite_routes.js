@@ -36,3 +36,5 @@ router.get('/favorites', requireToken, (req, res, next) => {
     // if an error occurs, pass it to the handler
     .catch(next)
 })
+
+module.exports = router
