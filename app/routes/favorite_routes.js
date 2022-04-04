@@ -51,7 +51,8 @@ router.get('/search/:type/:name', (req, res, next) => {
     .get(
       `${apiUrl}${type}?client_id=${clientCode}&client_SECRET=${secretCode}&name=${name}`
     )
-    .then((data) => res.status(200).json({ data }))
+    .then((response) => res.status(200).json(response.data))
+    // .then(response => console.log(JSON.stringify(response.data)))
     // console.log('this is the data', data)
     // if an error occurs, pass it to the handler
     .catch(next)
