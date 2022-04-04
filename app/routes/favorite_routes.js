@@ -37,6 +37,27 @@ router.get('/favorites', requireToken, (req, res, next) => {
     .catch(next)
 })
 
+// SEARCH
+// GET
+router.get('/search/:type/:name', (req, res, next) => {
+  const type = req.params.type
+  const name = req.params.name
+  const apiUrl = 'https://api.seatgeek.com/2/'
+  const clientCode = 'MjYzNDYyODl8MTY0ODY4NTU3OS45NjEwNTYy'
+  const secretCode =
+    '2b6bbdda96ccdb82a057700129eeefa19c774f6ff5e39ab28e15eb61db0013e4'
+  axios
+    .get(
+      `${apiUrl}${type}?client_id=${clientCode}&client_SECRET=${secretCode}&name=${name}`
+    )
+    .then((favorite) => {
+      return favorite.map((favorite) => favorite.toObject())
+    })
+    .then((favorite) => res.status(200).json({ favorite: favorite }))
+    // if an error occurs, pass it to the handler
+    .catch(next)
+})
+
 // SHOW
 // GET /favorites/<seatGeekId>
 router.get('/favorites/:id', requireToken, (req, res, next) => {
